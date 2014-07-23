@@ -232,23 +232,25 @@ static const char viewDelegate;
 
 + (NSString *)selectorFromStyleable:(id<PXStyleable>)styleable
 {
-    NSMutableArray *parts = [[NSMutableArray alloc] init];
-
     // add element name
-    [parts addObject:styleable.pxStyleElementName];
-
+    NSMutableString *selector = [NSMutableString stringWithString:styleable.pxStyleElementName];
+    
     // add id
-    if (styleable.styleId) [parts addObject:[NSString stringWithFormat:@"#%@", styleable.styleId]];
-
+    if (styleable.styleId) {
+        [selector appendString:@"#"];
+        [selector appendString:styleable.styleId];
+    }
+    
     // add classes
     NSArray *classes = styleable.styleClasses;
 
     for (NSString *className in classes)
     {
-        [parts addObject:[NSString stringWithFormat:@".%@", className]];
+        [selector appendString:@"."];
+        [selector appendString:className];
     }
 
-    return [parts componentsJoinedByString:@""];
+    return selector;
 }
 
 + (void)enumerateStyleableAndDescendants:(id<PXStyleable>)styleable usingBlock:(void (^)(id obj, BOOL *stop, BOOL *stopDescending))block
