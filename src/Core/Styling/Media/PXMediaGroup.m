@@ -112,7 +112,7 @@
         result = uncategorizedRuleSets_;
     }
 
-    return (result != nil) ? [NSArray arrayWithArray:result] : nil;
+    return result;
 }
 
 #pragma mark - Methods

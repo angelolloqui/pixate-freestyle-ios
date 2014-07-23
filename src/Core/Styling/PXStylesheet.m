@@ -288,7 +288,7 @@ static int ddLogLevel = LOG_LEVEL_WARN;
         }
     }
 
-    return [NSArray arrayWithArray:result];
+    return result;
 }
 
 - (void)setURI:(NSString *)uri forNamespacePrefix:(NSString *)prefix

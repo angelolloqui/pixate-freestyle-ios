@@ -58,14 +58,15 @@ static int ddLogLevel = LOG_LEVEL_WARN;
     if ([self.rhs matches:element])
     {
         id parent = element.pxStyleParent;
-
-        while (parent != nil && result == NO)
+        NSInteger parents = 0;
+        while (parent != nil && result == NO && parents < 4)
         {
             id<PXStyleable> styleableParent = parent;
 
             result = [self.lhs matches:styleableParent];
 
             parent = styleableParent.pxStyleParent;
+            parents++;
         }
     }
 

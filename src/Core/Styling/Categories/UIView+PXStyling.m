@@ -278,7 +278,8 @@ static NSMutableArray *DYNAMIC_SUBCLASSES;
 
         if (shouldStyle)
         {
-            [self updateStyles];
+//            [self updateStyles];
+            [self updateStylesNonRecursively];
         }
     }
 }
