@@ -449,10 +449,11 @@ static const char viewDelegate;
         NSValue *cachedHashValue = [cachedHashValues objectForKey:stateNameKey];
 
         // calculate active declarations hash
-        CGRect bounds = styleable.bounds;
-        NSString *boundsString = [NSString stringWithFormat:@"%f,%f,%f,%f", bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height];
-        __block NSUInteger activeDeclarationsHash = boundsString.hash;
-
+//        CGRect bounds = styleable.bounds;
+//        NSString *boundsString = [NSString stringWithFormat:@"%f,%f,%f,%f", bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height];
+//        __block NSUInteger activeDeclarationsHash = boundsString.hash;
+        __block NSUInteger activeDeclarationsHash = 0;
+        
         [declarations enumerateObjectsUsingBlock:^(PXDeclaration *declaration, NSUInteger idx, BOOL *stop) {
             activeDeclarationsHash = activeDeclarationsHash * 31 + declaration.hash;
         }];
