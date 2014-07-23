@@ -175,7 +175,7 @@ static NSString *DEFAULT_FONT = @"Helvetica";
         _shape.fill = [self getCombinedPaints];
 
         // apply stroke, and possible modify geometry bounds
-        if (_boxModel.hasBorder)
+        if (_boxModel.hasBorder && !_boxModel.borderUsesLayer)
         {
             // NOTE: we're using top border since we set all borders the same right now
             CGFloat strokeWidth = _boxModel.borderTopWidth;
@@ -199,7 +199,7 @@ static NSString *DEFAULT_FONT = @"Helvetica";
         }
 
         // set corner radius
-        if ([self.shape isKindOfClass:[PXRectangle class]])
+        if ([self.shape isKindOfClass:[PXRectangle class]] &&  !_boxModel.cornerUsesLayer)
         {
             PXRectangle *rect = (PXRectangle *)self.shape;
 
