@@ -64,8 +64,11 @@ typedef enum {
 - (id)initWithBounds:(CGRect)bounds;
 
 - (BOOL)hasBorder;
+- (BOOL)borderUsesLayer;
+
 
 - (BOOL)hasCornerRadius;
+- (BOOL)cornerUsesLayer;
 
 - (BOOL)isOpaque;
 
